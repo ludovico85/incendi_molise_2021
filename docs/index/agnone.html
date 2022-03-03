@@ -33,21 +33,13 @@
 	minZoom: 15,
     maxZoom: 16,
 	maxBounds: [[41.873241, 14.306741], [41.831704, 14.391172]],
-	
+
 	fullscreenControl:true
 	}).setView([41.852629, 14.349217], 15);
-	
-	/*/var southWest = L.latLng(13.95, 14.20),
-	northEast = L.latLng(41.64, 41.84);
-	var bounds = L.latLngBounds(southWest, northEast);
 
-	map.setMaxBounds(bounds);
-	map.on('drag', function() {
-		map.panInsideBounds(bounds, { animate: false });
-	});/*/
 
     var lyr0 = L.tileLayer('../tiles/agnone_pre/{z}/{x}/{y}.png', {
-        tms: false, 
+        tms: false,
 	//opacity: 1,
 	}).addTo(map);
 
@@ -58,9 +50,6 @@
 	//opacity: 1,
 	}).addTo(map);
 	L.control.sideBySide(lyr0, lyr1).addTo(map);
-	/*/var osmLayer2 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
-    }).addTo(map);/*/
 
     </script>
 </body>
