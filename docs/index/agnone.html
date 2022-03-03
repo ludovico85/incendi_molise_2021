@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui' />
+    <title></title>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="../js/leaflet-side-by-side.js"></script>
+	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+	<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href='../css/leaflet.css' rel='stylesheet' />
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id='map'></div>
+
+    <script>
+    var map = L.map('map',
+	{
+	minZoom: 15,
+    maxZoom: 16,
+	maxBounds: [[41.873241, 14.306741], [41.831704, 14.391172]],
+	
+	fullscreenControl:true
+	}).setView([41.852629, 14.349217], 15);
+	
+	/*/var southWest = L.latLng(13.95, 14.20),
+	northEast = L.latLng(41.64, 41.84);
+	var bounds = L.latLngBounds(southWest, northEast);
+
+	map.setMaxBounds(bounds);
+	map.on('drag', function() {
+		map.panInsideBounds(bounds, { animate: false });
+	});/*/
+
+    var lyr0 = L.tileLayer('../tiles/agnone_pre/{z}/{x}/{y}.png', {
+        tms: false, 
+	//opacity: 1,
+	}).addTo(map);
+
+    // Overlay (tiles layer TMS locale)
+	var lyr1 = L.tileLayer('../tiles/agnone_post/{z}/{x}/{y}.png', {
+        tms: false,
+		attribution: '&copy; <a href="https://apps.sentinel-hub.com/eo-browser/">Sentinel Hub EO Browser<\/a> Immagini satellitari Sentinel 2A in falso colore (8-4-3)'
+	//opacity: 1,
+	}).addTo(map);
+	L.control.sideBySide(lyr0, lyr1).addTo(map);
+	/*/var osmLayer2 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
+    }).addTo(map);/*/
+
+    </script>
+</body>
+</html>
